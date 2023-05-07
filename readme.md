@@ -34,15 +34,13 @@ This is a Node.js API that uses Sequelize for database management, JWT for user 
 7)logout->"/auth/logout"
 
 
-**Middleware*
+**Middleware**
 
 This API also includes the following middleware functions:
 
 1)errorHandler: Handles errors and returns appropriate responses to the client.
 
 2)requestLogger: Logs each incoming request to the console.
-
-3)authenticate: Verifies that the incoming request has a valid JWT token in its Authorization header.
 
 
 **Technologies Used**
