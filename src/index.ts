@@ -34,6 +34,7 @@ function requestLogger(req: any, res: any, next: any) {
 // middleware function for authentication
 export default function authenticate(req:any, res:any, next:any) {
     const authHeader = req.headers.authorization;
+    
     if (authHeader) {
       const token = authHeader.split(' ')[1];
       const JWT_SECRET_KEY:any=process.env.JWT_SECRET_KEY;
@@ -63,7 +64,7 @@ app.use("/auth",authroutes); //login,logout,regiter
 
 
 // CRUD operations with sequelize
-app.get("/api",authenticate, async (req: any, res: any) => {
+app.get("/api", async (req: any, res: any) => {
     try {
         const items = await Items.findAll();
         res.status(200).json(items);
@@ -73,7 +74,7 @@ app.get("/api",authenticate, async (req: any, res: any) => {
     }
 })
 
-app.post("/api/newitems",authenticate, async (req: any, res: any) => {
+app.post("/api/newitems", async (req: any, res: any) => {
     console.log(req.body);
     const { name, price } = req.body;//destructing the body
     if (await createItem(name, price)) {
@@ -82,7 +83,7 @@ app.post("/api/newitems",authenticate, async (req: any, res: any) => {
     return res.status(400).json({success: false, message: "item not created" });
 })
 
-app.put("/api/updateitems",authenticate, async (req: any, res: any) => {
+app.put("/api/updateitems", async (req: any, res: any) => {
     console.log(req.body);
     const { name, price } = req.body;//destructing the body
     if (await updateItem(name, price))
@@ -90,7 +91,7 @@ app.put("/api/updateitems",authenticate, async (req: any, res: any) => {
     return res.status(400).json({success: false, message: "item not updated" });
 })
 
-app.delete("/api/deleteitems",authenticate, async (req: any, res: any) => {
+app.delete("/api/deleteitems", async (req: any, res: any) => {
     console.log(req.body);
     const { name } = req.body;//destructing the body
     if (await Items.destroy({ where: { name: name } }))

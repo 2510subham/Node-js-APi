@@ -46,7 +46,9 @@ router.post("/login",async(req,res)=>{
         //create jwt token
         const JWT_SECRET_KEY:any=process.env.JWT_SECRET_KEY;
         const token = jwt.sign({ id: user[0].dataValues.id}, JWT_SECRET_KEY,{expiresIn:"1h"});
-            localStorage.setItem("token",token);
+        //set the token in the header
+        res.set('Authorization', `Bearer ${token}`);
+
         return res.status(200).json({success:true,
                 token
             });
@@ -58,7 +60,8 @@ router.post("/login",async(req,res)=>{
 });
 
 router.post('/logout', (req, res) => {
-    res.setHeader('Set-Cookie', 'token=; Max-Age=-1');
+    res.setHeader('Set-Cookie', 'token=; Max-Age=-1')
+    
 
     res.status(200).send("logged out successfully");
     })
