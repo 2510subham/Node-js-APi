@@ -46,8 +46,7 @@ router.post("/login",async(req,res)=>{
         //create jwt token
         const JWT_SECRET_KEY:any=process.env.JWT_SECRET_KEY;
         const token = jwt.sign({ id: user[0].dataValues.id}, JWT_SECRET_KEY,{expiresIn:"1h"});
-            
-        //set token browser cookies and send the response to clinet
+            localStorage.setItem("token",token);
         return res.status(200).json({success:true,
                 token
             });
