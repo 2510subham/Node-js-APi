@@ -19,29 +19,44 @@ This is a Node.js API that uses Sequelize for database management, JWT for user 
 **API Endpoints**
 
 1)Create-> "/api"
+
 2)Read->"/api/newitems"
+
 3)Update->"/api/updateitems"
+
 4)Delete->"/api/deleteitems"
 
+
 5)register->"/auth/register"
+
 6)login->"/auth/login"
+
 7)logout->"/auth/logout"
+
 
 **Middleware*
 
 This API also includes the following middleware functions:
 
 1)errorHandler: Handles errors and returns appropriate responses to the client.
+
 2)requestLogger: Logs each incoming request to the console.
+
 3)authenticate: Verifies that the incoming request has a valid JWT token in its Authorization header.
+
 
 **Technologies Used**
 
 1)Node.js
+
 2)Express.js
+
 3)SQL
+
 4)JSON Web Tokens (JWT)
+
 5)Sequelise
+
 
 
 
