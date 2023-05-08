@@ -1,13 +1,11 @@
-import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import {User} from "./authModel";
-import 'dotenv/config';
-const router=express.Router();
+import {User} from "../model/authModel";
+import { JWT_SECRET_KEY } from "../src/config";
 
 
 
-router.post("/register",async(req,res)=>{
+export const registerUser=async(req:any,res:any)=>{
     console.log(req.body);
     
     try {
@@ -23,9 +21,9 @@ router.post("/register",async(req,res)=>{
     } catch (err) {
         res.status(404).json({ success: false, message: "failed to register",error:err});
     }
-});
+};
 
-router.post("/login",async(req,res)=>{
+export const loginUser=async(req:any,res:any)=>{
     const email = req.body.email;
 
     try {
@@ -44,7 +42,6 @@ router.post("/login",async(req,res)=>{
         }
         //if correct
         //create jwt token
-        const JWT_SECRET_KEY:any=process.env.JWT_SECRET_KEY;
         const token = jwt.sign({ id: user[0].dataValues.id}, JWT_SECRET_KEY,{expiresIn:"1h"});
         //set the token in the header
         res.set('Authorization', `Bearer ${token}`);
@@ -57,14 +54,13 @@ router.post("/login",async(req,res)=>{
         return res.status(404).json({ success: false, message: 'Invalid credentials' });
     }
 
-});
+};
 
-router.post('/logout', (req, res) => {
+export const logoutUser=async (req:any, res:any) => {
     res.setHeader('Set-Cookie', 'token=; Max-Age=-1')
     
 
     res.status(200).send("logged out successfully");
-    })
+    }
   
 
-export default router;

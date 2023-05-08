@@ -1,5 +1,5 @@
 import { Sequelize, DataTypes } from 'sequelize';
-import { DB_HOST,DB_PASSWORD,DB_DATABASE,DB_PORT,DB_USERNAME } from './config';
+import { DB_HOST,DB_PASSWORD,DB_DATABASE,DB_PORT,DB_USERNAME } from '../src/config';
 
 // create a sequelize instance with the database connection details
 export const sequelize = new Sequelize(DB_DATABASE, DB_USERNAME, DB_PASSWORD, {
