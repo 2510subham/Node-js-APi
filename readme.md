@@ -1,4 +1,4 @@
-**Node.js API with Sequelize and JWT**
+**Node.js API**
 
 This is a Node.js API that uses Sequelize for database management, JWT for user authentication, and middleware for common tasks. The API provides endpoints for CRUD operations for items ,all crud operation is done through Mysql and using ORM Sequelise, it contains api endpoints for user registration, login, and logout.
 
