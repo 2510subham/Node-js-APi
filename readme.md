@@ -18,13 +18,13 @@ This is a Node.js API that uses Sequelize for database management, JWT for user 
 
 **API Endpoints**
 
-1)Create-> "/api"
+1)Create-> "/"
 
-2)Read->"/api/newitems"
+2)Read->"/newitems"
 
-3)Update->"/api/updateitems"
+3)Update->"/updateitems"
 
-4)Delete->"/api/deleteitems"
+4)Delete->"/deleteitems"
 
 
 5)register->"/auth/register"
