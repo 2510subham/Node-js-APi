@@ -1,0 +1,8 @@
+services:
+  - name: API
+    env:
+      NODE_ENV: production
+    start_cmd: npm start
+    health_check:
+      path: /
+      port: 3000
