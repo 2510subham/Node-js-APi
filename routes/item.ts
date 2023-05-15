@@ -1,6 +1,7 @@
 import express from 'express';
 const router =express.Router();
 import {getItem,createItem,updateItem,deleteItem} from '../controller/itemController';
+import authenticate from '../src/index';
 
 
 router.get("/",getItem)
